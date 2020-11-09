@@ -19,8 +19,8 @@ console.log(JSON.stringify(user));
 
 // TI: const map: google.maps.Map<HTMLElement>
 const googleMap = new GoogleMap(document.getElementById('map'), user.location.latLngLiteral());
-const userMarker = new GoogleMapMarker(googleMap.map, user.location.latLngLiteral());
-const companyMarker = new GoogleMapMarker(googleMap.map, user.company.location.latLngLiteral());
+const userMarker = new GoogleMapMarker(googleMap.map, user.location);
+const companyMarker = new GoogleMapMarker(googleMap.map, user.company.location);
 
 user.location.setMarkerContent(`
 <div>
@@ -37,5 +37,5 @@ user.company.location.setMarkerContent(`
 </div>
 `);
 
-userMarker.addInfoWindow(user.location.markerContent());
-companyMarker.addInfoWindow(user.company.location.markerContent());
+userMarker.addInfoWindow();
+companyMarker.addInfoWindow();
