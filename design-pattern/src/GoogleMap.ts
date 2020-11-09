@@ -1,14 +1,12 @@
-import { Location } from './Location';
-
 export class GoogleMap {
 	private readonly _map: google.maps.Map;
 
-	constructor(element: HTMLElement) {
+	constructor(element: HTMLElement, latLngLiteral?: google.maps.LatLngLiteral) {
 		this._map = new google.maps.Map(element, {
 			zoom: 1,
 			center: {
-				lat: 0,
-				lng: 0
+				lat: latLngLiteral ? latLngLiteral.lat : 0,
+				lng: latLngLiteral ? latLngLiteral.lng : 0
 			}
 		})
 	}

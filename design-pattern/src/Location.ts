@@ -1,8 +1,9 @@
 import { address } from 'faker';
+import { IGoogleMapMappable } from "./IGoogleMapMappable";
 
-export class Location {
-	private readonly lat: number;
-	private readonly long: number;
+export class Location implements IGoogleMapMappable{
+	readonly lat: number;
+	readonly long: number;
 	private readonly _city: string;
 	private _markerContent: string;
 
@@ -12,31 +13,32 @@ export class Location {
 		this._city = address.city();
 	}
 
-	get latitude(): number {
+	latitude(): number {
 		return this.lat;
 	}
 
-	get longitude(): number {
+	longitude(): number {
 		return this.long;
 	}
 
-	get city(): string {
+	city(): string {
 		return this._city;
 	}
 
-	get latLngLiteral(): google.maps.LatLngLiteral {
+	latLngLiteral(): google.maps.LatLngLiteral {
 		return {
-			lat: this.latitude,
-			lng: this.longitude
+			lat: this.latitude(),
+			lng: this.longitude()
 		}
 	}
 
-	set markerContent(content: string) {
-		this._markerContent = content;
+	markerContent(): string {
+		return this._markerContent;
 	}
 
-	get markerContent(): string {
-		return this._markerContent;
+	setMarkerContent(content: string): Location {
+		this._markerContent = content;
+		return this;
 	}
 
 }

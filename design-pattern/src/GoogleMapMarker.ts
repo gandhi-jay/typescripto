@@ -13,7 +13,7 @@ export class GoogleMapMarker {
     }
 
     addInfoWindow(content: string): GoogleMapMarker {
-        this._marker.addListener('click', (event): void=> {
+        this._marker.addListener('click', (): void=> {
             const infoWindow = new google.maps.InfoWindow({
                 content
             });
