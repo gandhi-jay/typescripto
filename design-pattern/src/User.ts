@@ -6,9 +6,9 @@ import { Company } from './Company';
 // Install Type Definition File --> .d.ts
 
 export class User {
-	private _name: string;
-	private _location: Location;
-	private _company: Company;
+	private readonly _name: string;
+	private readonly _location: Location;
+	private readonly _company: Company;
 
 	constructor() {
 		this._name = `${name.firstName()} ${name.lastName()}`

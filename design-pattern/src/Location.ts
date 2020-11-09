@@ -1,9 +1,10 @@
 import { address } from 'faker';
 
 export class Location {
-	private lat: number;
-	private long: number;
-	private _city: string;
+	private readonly lat: number;
+	private readonly long: number;
+	private readonly _city: string;
+	private _markerContent: string;
 
 	constructor() {
 		this.lat = parseFloat(address.latitude());
@@ -22,4 +23,20 @@ export class Location {
 	get city(): string {
 		return this._city;
 	}
+
+	get latLngLiteral(): google.maps.LatLngLiteral {
+		return {
+			lat: this.latitude,
+			lng: this.longitude
+		}
+	}
+
+	set markerContent(content: string) {
+		this._markerContent = content;
+	}
+
+	get markerContent(): string {
+		return this._markerContent;
+	}
+
 }
